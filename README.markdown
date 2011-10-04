@@ -25,7 +25,7 @@ Method missing:
 
 DSLs
 * an rspec-like thing: `specky.rb` (based off a [Gary Bernhardt
-  screencast](http://destroyallsoftware.com)
+  screencast](https://www.destroyallsoftware.com/screencasts/catalog/building-rspec-from-scratch))
 
 Ruby macros:
 * something that works like `attr_accessor`, but accepts a block with an
