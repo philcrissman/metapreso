@@ -1,0 +1,54 @@
+metaprogramming.
+
+Hooks - Making things happen magically.
+
+Psuedo-Test::Unit from scratch example. 
+
+-Test::Unit has you create your test classes as subclasses of
+Test::Unit::TestCase. Then when you execute the ruby file(s) containing
+your test classes (Ruby classes are executable code), Test::Unit
+seemingly magically picks out all the test methods, and runs them. How
+does it do that?
+
+We can implement a bare-bones Test class that acts like Test::Unit by
+utilizing a couple of hooks that Ruby gives us: 
+ - inherited (called whenever a subclass is created)
+ - at_exit (a special block which is called, as you might guess, right
+   before the Ruby interpreter exits.
+
+Steps: 
+
+- Write Testy class; write assert method.
+- Write the at_exit method that makes Testy call the class method run
+  unless there was an error.
+- write the class << self block; start the run method.
+- start the class method ::run... what should it do? Well, it needs to
+  run the tests on all the subclasses of Testy. So let's stop and define
+a class level attr_accessor for subclasses, and then add the inherited
+hook to add each new subclass to this array.
+- Now we can iterate through our array of subclasses, and we want to
+  call each method that begins with 'test'. They are all instance
+methods, so the easiest way seems to be to just create an instance of
+the Testy subclass, get the methods.grep(/^test/), and then call each
+method with send.
+- We're emulating Test::Unit, so let's print a '.' if the test passes
+  and a 'F' if it fails.
+- But wait! We want to tell people which tests failed. We can create
+  another class-level attr_accessor to store the names of failed tests,
+and add m to it, if it failed.
+- Now we can report the total number of tests, the number that passed
+  and the number that failed, with some simple math.
+- And using the class accessor for failed_tests, we can print out a list
+  of failed tests.
+- Wait, it would be nice to know how long this took. It's not going to
+  be exact, but let's just try to capture the time when we start and
+when we finish. Subtracting one Ruby Time from another returns the
+difference in seconds, so we can print that out.
+
+There! In 48 lines of Ruby, we've emulated the bare-bones of a
+Test::Unit-like library. Yay metaprogramming. All we used was the
+knowledge of a couple Ruby hooks (inherited and at_exit), use of the
+send method to call the tests of each subclass, and some class-level
+attr_accessors to store the things we wanted to keep track of. Nifty!
+
+
