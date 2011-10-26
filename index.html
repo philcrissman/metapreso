@@ -10,7 +10,6 @@
 	<title>Better Living Through Metaprogramming</title>
 	
 	<meta name="description" content="A jQuery library for modern HTML presentations">
-	<meta name="author" content="Caleb Troughton">
 	<meta name="viewport" content="width=1024, user-scalable=no">
 	
 	<!-- Core and extension CSS files -->
@@ -37,22 +36,12 @@
 
 <div class="slide" id="whoami">
   <h2>Who am I?</h2>
-  <p class="slide">My name is Phil Crissman</p>
-</div>
-
-<div class="slide" id="thisissam">
-  <img src="images/sam.jpg" height="100%" />
-</div>
-
-<div class="slide" id="whoami2">
-  <h2>Who am I?</h2>
   <p>My name is Phil Crissman</p>
   <ul>
     <li class="slide">I started using Ruby and Rails in 2008</li>
     <li class="slide">I'm a freelance web developer</li>
     <li class="slide">I make things for the web with Ruby and Javascript</li>
-    <li class="slide">Today I am going to talk about Ruby</li>
-    <li class="slide">In particular, Metaprogramming with Ruby</li>
+    <li class="slide">Today I am going to talk about Metaprogramming with Ruby</li>
   </ul>
 </div>
 <div class="slide" id="metaprogramming-overview">
@@ -83,11 +72,11 @@
 </div>
 
 <div class="slide">
-  <h1>RUBY AND META-PROGRAMMING</h1>
+  <img src="images/dsl_yaml.png" width="100%" />
 </div>
 
 <div class="slide">
-  <img src="images/ruby_class_object.png" width="100%" />
+  <h1>RUBY AND META-PROGRAMMING</h1>
 </div>
 
 <div class="slide" id="open-classes">
@@ -113,13 +102,6 @@
   </pre>
 </div>
 
-<div class="slide" id="ruby-objects-1a">
-  <h2>Ruby's Object Model</h2>
-  <p>It's important to understand that the second time you write <code>class Foo</code>, you <em>aren't</em> creating a new class.</p>
-  <p>You're just <em>reopening</em> the class of that name to either add new methods, or override old ones.</p>
-</div>
-
-
 <div class="slide" id="ruby-objects-2">
   <img src="images/molotov_cocktail.jpg" height="80%" />
   <code>class MolotovCocktail < Weapon; end</code>
@@ -133,11 +115,6 @@
 <div class="slide" id="ruby-objects-4">
   <img src="images/banksy-angry-birds.jpg" height="80%" />
   <code>class MolotovCocktail; def use; AngryBird.new; end; end</code>
-</div>
-
-<div class="slide" id="ruby-objects-5">
-  <h2>Ruby's Object Model</h2>
-  <p>You should be careful. Ruby is object oriented, so if something else inherits from the class whose method you overrode...</p>
 </div>
 
 <div class="slide" id="ruby-objects-6">
